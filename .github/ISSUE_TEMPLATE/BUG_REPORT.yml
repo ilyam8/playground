@@ -72,6 +72,7 @@ body:
         ```
 
         </details>
+      render: markdown
     validations:
       required: true
   - type: dropdown
