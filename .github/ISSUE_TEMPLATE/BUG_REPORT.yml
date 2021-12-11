@@ -5,8 +5,7 @@ labels: ["bug", "triage"]
 body:
   - type: markdown
     attributes:
-      value: |
-        Submit a report and help us improve our free and open-source Netdata Agent.
+      value: "## Submit a report and help us improve our free and open-source Netdata Agent."
   - type: checkboxes
     id: terms
     attributes:
