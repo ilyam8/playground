@@ -1,21 +1,16 @@
 name: Bug Report
 description: File a bug report
 title: "[Bug]: "
-labels: ["bug", "triage"]
+labels: [ "bug", "triage" ]
 body:
   - type: markdown
     attributes:
-      value: "#### Submit a report and help us improve our free and open-source Netdata Agent."
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: When creating a bug report please
-      options:
-        - label: Verify that your issue is not already reported on GitHub.
-          required: true
-        - label: Test if the latest release and master branch are affected too.
-          required: true
+      value: |
+        Submit a report and help us improve our free and open-source Netdata Agent.
+
+        :exlamation: Before submitting a bug report:
+          - Verify that your issue is not already reported on GitHub.
+          - Test if the latest release and master branch are affected too.
   - type: textarea
     id: summary
     attributes:
@@ -39,7 +34,7 @@ body:
         # macOS
         uname -a; sw_vers
         ```
-        :point_right: This will be automatically formatted into code, so no need for backticks.
+        **This will be automatically formatted into code, so no need for backticks.**
       render: shell
     validations:
       required: true
@@ -62,7 +57,7 @@ body:
 
         </details>
 
-        :point_right: This will be automatically formatted into code, so no need for backticks.
+        **This will be automatically formatted into code, so no need for backticks.**
       render: shell
     validations:
       required: true
