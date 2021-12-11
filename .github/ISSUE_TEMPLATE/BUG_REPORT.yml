@@ -5,18 +5,24 @@ labels: [ "bug", "triage" ]
 body:
   - type: markdown
     attributes:
+      value: "### Thank you for contributing to our project!"
+  - type: markdown
+    attributes:
       value: |
         Submit a report and help us improve our free and open-source Netdata Agent.
+          <a href="https://github.com/netdata/netdata/releases/latest"><img src="https://img.shields.io/github/release/netdata/netdata.svg" alt="Latest release"></a>
+          <a href="https://storage.googleapis.com/netdata-nightlies/latest-version.txt"><img src="https://img.shields.io/badge/dynamic/xml?url=https://storage.googleapis.com/netdata-nightlies/latest-version.txt&label=nightly%20release&query=/text()" alt="Nightly release"></a>
 
         :exclamation: Before submitting:
           - Verify that your issue is not already reported on GitHub.
-          - Test if the latest release and master branch are affected too.
+          - Test if the [latest release](https://github.com/netdata/netdata/releases/latest) and master branch are affected too.
   - type: input
     id: netdata-component
     attributes:
       label: Component name
       description: |
-        Let us know which component is affected by the bug. Our code is structured according to its component, so the component name is the same as the top level directory of the repository.
+        Let us know which component is affected by the bug.
+        The component name is the same as the top level directory of the repository.
       placeholder: ex. web, packaging, collectors
     validations:
       required: true
@@ -24,8 +30,7 @@ body:
     id: report-summary
     attributes:
       label: Bug report summary
-      description: "Provide a clear and concise description of the bug you're experiencing."
-      value: "A bug happened!"
+      description: Provide a clear and concise description of the bug you're experiencing.
     validations:
       required: true
   - type: textarea
@@ -52,7 +57,7 @@ body:
     attributes:
       label: Netdata build info
       description: |
-        Provide output of `netdata -W buildinfo`
+        Provide output of `netdata -W buildinfo`.
         (or `netdata -v` if you're using an old version of Netdata Agent, that doesn't support buildinfo).
 
         <details>
@@ -76,8 +81,7 @@ body:
     attributes:
       label: Installation method
       description: |
-        Tell us which 
-        [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used.
+        Tell us which [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used.
       multiple: true
       options:
         - "kickstart.sh"
