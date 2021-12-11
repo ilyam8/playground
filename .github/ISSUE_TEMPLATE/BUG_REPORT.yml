@@ -58,10 +58,9 @@ body:
         Provide Netdata Agent version and build info. To get this information, execute:
         ```shell
         netdata -W buildinfo
-        ```
-        If you get "netdata: command not found" error, try:
-        ```shell
+        # or (if you get "netdata: command not found" error)
         $(ps aux | grep -m1 -E -o "[a-zA-Z/]+netdata ") -W buildinfo
+        ```
         > NOTE: This will be automatically formatted into code, so no need for backticks.
       render: shell
     validations:
