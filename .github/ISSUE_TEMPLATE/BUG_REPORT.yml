@@ -8,7 +8,7 @@ body:
       value: |
         Submit a report and help us improve our free and open-source Netdata Agent.
 
-        :exlamation: Before submitting a bug report:
+        :exclamation: Before submitting a bug report:
           - Verify that your issue is not already reported on GitHub.
           - Test if the latest release and master branch are affected too.
   - type: textarea
