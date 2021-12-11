@@ -14,8 +14,8 @@ body:
         :exclamation: Before submitting:
           - Verify that your issue is not already reported on GitHub.
           - Check if your Netdata is up to date. If not, we recommend that you updgrade first.
-            - <a href="https://github.com/netdata/netdata/releases/latest"><img src="https://img.shields.io/github/release/netdata/netdata.svg" alt="Stable release"></a>
-            - <a href="https://storage.googleapis.com/netdata-nightlies/latest-version.txt"><img src="https://img.shields.io/badge/dynamic/xml?url=https://storage.googleapis.com/netdata-nightlies/latest-version.txt&label=nightly%20release&query=/text()" alt="Nightly release"></a>
+            - [latest stable release](https://github.com/netdata/netdata/releases/latest).
+            - [latest nightly release](https://storage.googleapis.com/netdata-nightlies/latest-version.txt).
           - Test if the master branch is affected too.
   - type: input
     id: netdata-component
