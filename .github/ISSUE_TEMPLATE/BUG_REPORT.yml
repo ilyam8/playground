@@ -9,10 +9,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        <img src="https://img.shields.io/github/release/netdata/netdata.svg&label=stable%20release"> <img src="https://img.shields.io/badge/dynamic/xml?url=https://storage.googleapis.com/netdata-nightlies/latest-version.txt&label=nightly%20release&query=/text()">
         Before submitting, we'd appreciate it if you:
           - Verify that your issue is not already reported on GitHub.
           - Check if your Netdata is up to date. If not, we recommend that you updgrade first.
+                <img src="https://img.shields.io/github/v/release/netdata/netdata.svg?label=stable%20release"> <img src="https://img.shields.io/badge/dynamic/xml?url=https://storage.googleapis.com/netdata-nightlies/latest-version.txt&label=nightly%20release&query=/text()">
   - type: input
     id: netdata-component
     attributes:
