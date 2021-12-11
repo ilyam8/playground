@@ -9,7 +9,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        <img src="https://img.shields.io/github/v/release/netdata/netdata.svg?label=latest%20stable"> <img src="https://img.shields.io/badge/dynamic/xml?url=https://storage.googleapis.com/netdata-nightlies/latest-version.txt&label=latest%20nightly&query=/text()">
+        <img src="https://img.shields.io/github/v/release/netdata/netdata.svg?label=latest%20stable">
+        <img src="https://img.shields.io/badge/dynamic/xml?url=https://storage.googleapis.com/netdata-nightlies/latest-version.txt&label=latest%20nightly&query=/text()">
   - type: markdown
     attributes:
       value: |
