@@ -8,11 +8,21 @@ body:
       value: |
         Submit a report and help us improve our free and open-source Netdata Agent.
 
-        :exclamation: Before submitting a bug report:
+        :exclamation: Before submitting:
           - Verify that your issue is not already reported on GitHub.
           - Test if the latest release and master branch are affected too.
+  - type: input
+    id: netdata-component
+    attributes:
+      label: Component name
+      description: |
+        Let us know which component is affected by the bug. Our code is structured according to its component,
+        so the component name is the same as the top level directory of the repository.
+      placeholder: ex. web, packaging, collectors
+    validations:
+      required: true
   - type: textarea
-    id: summary
+    id: report-summary
     attributes:
       label: Bug report summary
       description: "Provide a clear and concise description of the bug you're experiencing."
@@ -39,16 +49,17 @@ body:
     validations:
       required: true
   - type: textarea
-    id: netdata-builfinfo
+    id: netdata-buildfinfo
     attributes:
-      label: Netdata version and buildinfo
+      label: Netdata build info
       description: |
-        Provide output of `netdata -W buildinfo` (or `netdata -v` if you're using an old version Netdata Agent, that doesn't support buildinfo).
+        Provide output of `netdata -W buildinfo`
+        (or `netdata -v` if you're using an old version of Netdata Agent, that doesn't support buildinfo).
 
         <details>
         <summary>If netdata not in PATH (netdata: command not found)</summary>
 
-        If `netdata` process is running, we can use `ps` to find an absolute path to the `netdata` binary.
+        If `netdata` process is running, use `ps` to find an absolute path to the `netdata` binary.
 
         ```shell
         $ ps aux | grep -m1 -E -o "[a-zA-Z/]+netdata "
@@ -65,7 +76,9 @@ body:
     id: install-method
     attributes:
       label: Installation method
-      description: "Tell us which [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used."
+      description: |
+        Tell us which 
+        [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used.
       multiple: true
       options:
         - "kickstart.sh"
@@ -82,7 +95,7 @@ body:
     id: reproduce
     attributes:
       label: Steps to reproduce
-      description: "Describe the steps to reproduce the bug."
+      description: Describe the steps to reproduce the bug.
       value: |
         1.
         2.
@@ -94,6 +107,13 @@ body:
     id: expected-behavior
     attributes:
       label: Expected behavior
-      description: "Provide a clear and concise description of what you expected to happen."
+      description: Provide a clear and concise description of what you expected to happen.
     validations:
       required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional info
+      description: Include gist of relevant config, logs, etc.
+    validations:
+      required: false
