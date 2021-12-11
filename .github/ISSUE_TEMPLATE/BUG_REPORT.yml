@@ -11,12 +11,11 @@ body:
       value: |
         Submit a report and help us improve our free and open-source Netdata Agent.
 
-        :exclamation: Before submitting:
+        Before submitting, we'd appreciate it if you:
           - Verify that your issue is not already reported on GitHub.
           - Check if your Netdata is up to date. If not, we recommend that you updgrade first.
             - [Latest stable release](https://github.com/netdata/netdata/releases/latest)
             - [Latest nightly release](https://storage.googleapis.com/netdata-nightlies/latest-version.txt)
-          - Test if the master branch is affected too.
   - type: input
     id: netdata-component
     attributes:
@@ -66,7 +65,7 @@ body:
         If Netdata is running, use `ps` to find an absolute path to the `netdata` binary.
 
         ```shell
-        $ ps aux | grep -m1 -E -o "[a-zA-Z/]+netdata "
+        ps aux | grep -m1 -E -o "[a-zA-Z/]+netdata "
         /opt/netdata/usr/sbin/netdata
         ```
 
@@ -81,8 +80,8 @@ body:
     attributes:
       label: Installation method
       description: |
-        Tell us which [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used.
-      multiple: true
+        Choose [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used.
+        Describe the method in the "Additional info" section if you chose "other".
       options:
         - "kickstart.sh"
         - "kickstart-static64.sh"
