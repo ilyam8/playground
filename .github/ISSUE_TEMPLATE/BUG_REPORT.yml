@@ -16,8 +16,7 @@ body:
     attributes:
       label: Component name
       description: |
-        Let us know which component is affected by the bug. Our code is structured according to its component,
-        so the component name is the same as the top level directory of the repository.
+        Let us know which component is affected by the bug. Our code is structured according to its component, so the component name is the same as the top level directory of the repository.
       placeholder: ex. web, packaging, collectors
     validations:
       required: true
