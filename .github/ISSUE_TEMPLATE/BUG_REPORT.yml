@@ -87,14 +87,14 @@ body:
         description: "Tell us which [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used."
         multiple: true
         options:
-          - kickstart.sh
-          - kickstart-static64.sh
-          - native binary packages (.deb/.rpm)
-          - from git
-          - from source
-          - docker
-          - helmchart (kubernetes)
-          - other
+          - "kickstart.sh"
+          - "kickstart-static64.sh"
+          - "native binary packages (.deb/.rpm)"
+          - "from git"
+          - "from source"
+          - "docker"
+          - "helmchart (kubernetes)"
+          - "other"
       validations:
         required: true
 
