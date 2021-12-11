@@ -55,21 +55,13 @@ body:
     attributes:
       label: Netdata build info
       description: |
-        Provide the output of `netdata -W buildinfo`.
-        (or `netdata -v` if you're using an old version of Netdata Agent, that doesn't support buildinfo).
-
-        <details>
-        <summary>If you get "netdata: command not found" error</summary>
-
-        If Netdata is running, use `ps` to find an absolute path to the `netdata` binary.
-
+        Provide Netdata Agent version and build info. To get this information, execute the following command:
         ```shell
-        ps aux | grep -m1 -E -o "[a-zA-Z/]+netdata "
-        /opt/netdata/usr/sbin/netdata
+        netdata -W buildinfo
+        # Alternatively, if you get "netdata: command not found" error, use
+        $(ps aux | grep -m1 -E -o "[a-zA-Z/]+netdata ") -W buildinfo
+        
         ```
-
-        </details>
-
         > NOTE: This will be automatically formatted into code, so no need for backticks.
       render: shell
     validations:
