@@ -14,8 +14,8 @@ body:
         :exclamation: Before submitting:
           - Verify that your issue is not already reported on GitHub.
           - Check if your Netdata is up to date. If not, we recommend that you updgrade first.
-            - [latest stable release](https://github.com/netdata/netdata/releases/latest).
-            - [latest nightly release](https://storage.googleapis.com/netdata-nightlies/latest-version.txt).
+            - [Latest stable release](https://github.com/netdata/netdata/releases/latest)
+            - [Latest nightly release](https://storage.googleapis.com/netdata-nightlies/latest-version.txt)
           - Test if the master branch is affected too.
   - type: input
     id: netdata-component
