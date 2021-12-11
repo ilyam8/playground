@@ -28,6 +28,11 @@ body:
         ip ro
         ro ip
         ```
+        <details>
+        <summary>Click to expand!</summary>
+        Hiddent content!
+        </details>
+
         Three two one.
       placeholder: Tell us what you see!
       value: "A bug happened!"
