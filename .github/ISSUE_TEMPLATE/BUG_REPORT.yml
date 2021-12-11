@@ -1,7 +1,7 @@
 name: Bug Report
 description: File a bug report
 title: "[Bug]: "
-labels: [ "bug", "triage" ]
+labels: ["bug", "triage"]
 body:
   - type: markdown
     attributes:
@@ -50,10 +50,10 @@ body:
       label: Netdata version and buildinfo
       description: |
         Provide output of `netdata -v` and `netdata -W buildinfo`.
-        
+
         <details>
         <summary>If netdata not in PATH (netdata: command not found)</summary>
-        
+
         If `netdata` process is running, we can use `ps` to find an absolute path to the `netdata` binary.
 
         ```shell
@@ -76,23 +76,22 @@ body:
     validations:
       required: true
   - type: dropdown
-      id: install-method
-      attributes:
-        label: Installation method
-        description: |
-          Tell us which [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used.
-        multiple: true
-        options:
-          - "kickstart.sh"
-          - "kickstart-static64.sh"
-          - "native binary packages (.deb/.rpm)"
-          - "from git"
-          - "from source"
-          - "docker"
-          - "helmchart (kubernetes)"
-          - "other"
-      validations:
-        required: true
+    id: install-method
+    attributes:
+      label: Installation method
+      description: "Tell us which [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used."
+      multiple: true
+      options:
+        - "kickstart.sh"
+        - "kickstart-static64.sh"
+        - "native binary packages (.deb/.rpm)"
+        - "from git"
+        - "from source"
+        - "docker"
+        - "helmchart (kubernetes)"
+        - "other"
+    validations:
+      required: true
   - type: textarea
     id: reproduce
     attributes:
