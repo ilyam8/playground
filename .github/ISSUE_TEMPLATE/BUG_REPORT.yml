@@ -39,7 +39,7 @@ body:
         # macOS
         uname -a; sw_vers
         ```
-        > :exclamation: This will be automatically formatted into code, so no need for backticks.
+        :point_right: This will be automatically formatted into code, so no need for backticks.
       render: shell
     validations:
       required: true
@@ -62,7 +62,7 @@ body:
 
         </details>
 
-        > :exclamation: This will be automatically formatted into code, so no need for backticks.
+        :point_right: This will be automatically formatted into code, so no need for backticks.
       render: shell
     validations:
       required: true
