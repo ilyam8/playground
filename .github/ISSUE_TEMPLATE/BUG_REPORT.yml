@@ -28,7 +28,6 @@ body:
         ip ro
         ro ip
         ```
-        
         Three two one.
       placeholder: Tell us what you see!
       value: "A bug happened!"
