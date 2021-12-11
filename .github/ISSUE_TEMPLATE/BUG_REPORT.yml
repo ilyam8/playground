@@ -39,7 +39,7 @@ body:
         # macOS
         uname -a; sw_vers
         ```
-        **This will be automatically formatted into code, so no need for backticks.**
+        > :exclamation: This will be automatically formatted into code, so no need for backticks.
       render: shell
     validations:
       required: true
@@ -48,7 +48,7 @@ body:
     attributes:
       label: Netdata version and buildinfo
       description: |
-        Provide output of `netdata -W buildinfo` (or `netdata -v` if you are using an old Netdata Agent, that doesn't support buildinfo).
+        Provide output of `netdata -W buildinfo` (or `netdata -v` if you're using an old version Netdata Agent, that doesn't support buildinfo).
 
         <details>
         <summary>If netdata not in PATH (netdata: command not found)</summary>
@@ -62,7 +62,7 @@ body:
 
         </details>
 
-        **This will be automatically formatted into code, so no need for backticks.**
+        > :exclamation: This will be automatically formatted into code, so no need for backticks.
       render: shell
     validations:
       required: true
