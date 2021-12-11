@@ -48,7 +48,7 @@ body:
     attributes:
       label: Netdata version and buildinfo
       description: |
-        Provide output of `netdata -v` and `netdata -W buildinfo`.
+        Provide output of `netdata -W buildinfo` (or `netdata -v` if you are using an old Netdata Agent, that doesn't support buildinfo).
 
         <details>
         <summary>If netdata not in PATH (netdata: command not found)</summary>
@@ -61,18 +61,9 @@ body:
         ```
 
         </details>
-      value: |
-        REPLACE ME with `netdata -v` output.
 
-        <details>
-        <summary>builfinfo</summary>
-
-        ```cmd
-        REPLACE ME with `netdata -W buildinfo` output.
-        ```
-
-        </details>
-      render: markdown
+        **This will be automatically formatted into code, so no need for backticks.**
+      render: shell
     validations:
       required: true
   - type: dropdown
