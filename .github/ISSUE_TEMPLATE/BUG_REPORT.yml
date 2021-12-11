@@ -5,24 +5,31 @@ labels: [ "bug", "triage" ]
 body:
   - type: markdown
     attributes:
+      value: "### Thank you for contributing to our project!"
+  - type: markdown
+    attributes:
       value: |
         Submit a report and help us improve our free and open-source Netdata Agent.
-  - type: checkboxes
-    id: terms
+
+        Before submitting, we'd appreciate it if you:
+          - Verify that your issue is not already reported on GitHub.
+          - Check if your Netdata is up to date. If not, we recommend that you updgrade first.
+            - [Latest stable release](https://github.com/netdata/netdata/releases/latest)
+            - [Latest nightly release](https://storage.googleapis.com/netdata-nightlies/latest-version.txt)
+  - type: input
+    id: netdata-component
     attributes:
-      label: Code of Conduct
-      description: When creating a bug report please
-      options:
-        - label: Verify that your issue is not already reported on GitHub.
-          required: true
-        - label: Test if the latest release and master branch are affected too.
-          required: true
+      label: Component name
+      description: |
+        Let us know which component is affected by the bug. The component name is the same as the top level directory of the repository.
+      placeholder: ex. web, packaging, collectors
+    validations:
+      required: true
   - type: textarea
-    id: summary
+    id: report-summary
     attributes:
       label: Bug report summary
-      description: "Provide a clear and concise description of the bug you're experiencing."
-      value: "A bug happened!"
+      description: Provide a clear and concise description of the bug you're experiencing.
     validations:
       required: true
   - type: textarea
@@ -30,8 +37,7 @@ body:
     attributes:
       label: System info
       description: |
-        Provide information about your system.
-        To get this information, execute one of the following commands based on your OS:
+        Provide information about your system. To get this information, execute one of the following commands based on your OS:
         ```shell
         # Linux
         uname -a; grep -HvE "^#|URL" /etc/*release
@@ -40,64 +46,48 @@ body:
         # macOS
         uname -a; sw_vers
         ```
-        **This will be automatically formatted into code, so no need for backticks.**
+        > NOTE: This will be automatically formatted into code, so no need for backticks.
       render: shell
     validations:
       required: true
   - type: textarea
-    id: netdata-builfinfo
+    id: netdata-buildfinfo
     attributes:
-      label: Netdata version and buildinfo
+      label: Netdata build info
       description: |
-        Provide output of `netdata -v` and `netdata -W buildinfo`.
-        
-        <details>
-        <summary>If netdata not in PATH (netdata: command not found)</summary>
-        
-        If `netdata` process is running, we can use `ps` to find an absolute path to the `netdata` binary.
-
+        Provide Netdata Agent version and build info. To get this information, execute:
         ```shell
-        $ ps aux | grep -m1 -E -o "[a-zA-Z/]+netdata "
-        /opt/netdata/usr/sbin/netdata
+        netdata -W buildinfo
+        # If get "netdata: command not found", try (required running Netdata)
+        $(ps aux | grep -m1 -E -o "[a-zA-Z/]+netdata ") -W buildinfo
         ```
-
-        </details>
-      value: |
-        REPLACE ME with `netdata -v` output.
-
-        <details>
-        <summary>builfinfo</summary>
-
-        ```cmd
-        REPLACE ME with `netdata -W buildinfo` output.
-        ```
-
-        </details>
+        > NOTE: This will be automatically formatted into code, so no need for backticks.
+      render: shell
     validations:
       required: true
   - type: dropdown
-      id: install-method
-      attributes:
-        label: Installation method
-        description: |
-          Tell us which [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used.
-        multiple: true
-        options:
-          - "kickstart.sh"
-          - "kickstart-static64.sh"
-          - "native binary packages (.deb/.rpm)"
-          - "from git"
-          - "from source"
-          - "docker"
-          - "helmchart (kubernetes)"
-          - "other"
-      validations:
-        required: true
+    id: install-method
+    attributes:
+      label: Installation method
+      description: |
+        Select [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used.
+        Describe the method in the "Additional info" section if you chose "other".
+      options:
+        - "kickstart.sh"
+        - "kickstart-static64.sh"
+        - "native binary packages (.deb/.rpm)"
+        - "from git"
+        - "from source"
+        - "docker"
+        - "helmchart (kubernetes)"
+        - "other"
+    validations:
+      required: true
   - type: textarea
     id: reproduce
     attributes:
       label: Steps to reproduce
-      description: "Describe the steps to reproduce the bug."
+      description: Describe the steps to reproduce the bug.
       value: |
         1.
         2.
@@ -109,6 +99,13 @@ body:
     id: expected-behavior
     attributes:
       label: Expected behavior
-      description: "Provide a clear and concise description of what you expected to happen."
+      description: Describe what you expected to happen when you performed the above steps.
     validations:
       required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional info
+      description: Any additional information related to the issue (ex. logs).
+    validations:
+      required: false
