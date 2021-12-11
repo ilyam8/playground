@@ -89,11 +89,11 @@ body:
         options:
           - "kickstart.sh"
           - "kickstart-static64.sh"
-          - "native binary packages (.deb/.rpm)"
+          - "native binary packages"
           - "from git"
           - "from source"
           - "docker"
-          - "helmchart (kubernetes)"
+          - "helmchart"
           - "other"
       validations:
         required: true
