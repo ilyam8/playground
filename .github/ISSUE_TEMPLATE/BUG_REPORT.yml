@@ -10,19 +10,19 @@ body:
     attributes:
       value: |
         Submit a report and help us improve our free and open-source Netdata Agent.
-          <a href="https://github.com/netdata/netdata/releases/latest"><img src="https://img.shields.io/github/release/netdata/netdata.svg" alt="Latest release"></a>
-          <a href="https://storage.googleapis.com/netdata-nightlies/latest-version.txt"><img src="https://img.shields.io/badge/dynamic/xml?url=https://storage.googleapis.com/netdata-nightlies/latest-version.txt&label=nightly%20release&query=/text()" alt="Nightly release"></a>
 
         :exclamation: Before submitting:
           - Verify that your issue is not already reported on GitHub.
-          - Test if the [latest release](https://github.com/netdata/netdata/releases/latest) and master branch are affected too.
+          - Check if your Netdata is up to date. If not, we recommend that you updgrade first.
+            - <a href="https://github.com/netdata/netdata/releases/latest"><img src="https://img.shields.io/github/release/netdata/netdata.svg" alt="Stable release"></a>
+            - <a href="https://storage.googleapis.com/netdata-nightlies/latest-version.txt"><img src="https://img.shields.io/badge/dynamic/xml?url=https://storage.googleapis.com/netdata-nightlies/latest-version.txt&label=nightly%20release&query=/text()" alt="Nightly release"></a>
+          - Test if the master branch is affected too.
   - type: input
     id: netdata-component
     attributes:
       label: Component name
       description: |
-        Let us know which component is affected by the bug.
-        The component name is the same as the top level directory of the repository.
+        Let us know which component is affected by the bug. The component name is the same as the top level directory of the repository.
       placeholder: ex. web, packaging, collectors
     validations:
       required: true
@@ -63,7 +63,7 @@ body:
         <details>
         <summary>If netdata not in PATH (netdata: command not found)</summary>
 
-        If `netdata` process is running, use `ps` to find an absolute path to the `netdata` binary.
+        If Netdata is running, use `ps` to find an absolute path to the `netdata` binary.
 
         ```shell
         $ ps aux | grep -m1 -E -o "[a-zA-Z/]+netdata "
