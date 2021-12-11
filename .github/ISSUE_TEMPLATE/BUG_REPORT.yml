@@ -7,7 +7,6 @@ body:
     attributes:
       value: |
         Submit a report and help us improve our free and open-source Netdata Agent.
-
   - type: checkboxes
     id: terms
     attributes:
@@ -18,7 +17,6 @@ body:
           required: true
         - label: Test if the latest release and master branch are affected too.
           required: true
-
   - type: textarea
     id: summary
     attributes:
@@ -27,7 +25,6 @@ body:
       value: "A bug happened!"
     validations:
       required: true
-
   - type: textarea
     id: system-info
     attributes:
@@ -47,7 +44,6 @@ body:
       render: shell
     validations:
       required: true
-
   - type: textarea
     id: netdata-builfinfo
     attributes:
@@ -56,7 +52,7 @@ body:
         Provide output of `netdata -v` and `netdata -W buildinfo`.
         
         <details>
-        <summary>If netdata not in PATH</summary>
+        <summary>If netdata not in PATH (netdata: command not found)</summary>
         
         If `netdata` process is running, we can use `ps` to find an absolute path to the `netdata` binary.
 
@@ -79,12 +75,12 @@ body:
         </details>
     validations:
       required: true
-
   - type: dropdown
       id: install-method
       attributes:
         label: Installation method
-        description: "Tell us which [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used."
+        description: |
+          Tell us which [installation method](https://learn.netdata.cloud/docs/agent/packaging/installer#alternative-methods) you used.
         multiple: true
         options:
           - "kickstart.sh"
@@ -97,7 +93,6 @@ body:
           - "other"
       validations:
         required: true
-
   - type: textarea
     id: reproduce
     attributes:
@@ -110,7 +105,6 @@ body:
         ...
     validations:
       required: true
-
   - type: textarea
     id: expected-behavior
     attributes:
