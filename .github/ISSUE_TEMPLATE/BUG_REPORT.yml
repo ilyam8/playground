@@ -23,6 +23,7 @@ body:
       description: |
         Let us know which component is affected by the bug. The component name is the same as the top level directory of the repository.
       placeholder: ex. web, packaging, collectors
+      value: :man_shrugging:
     validations:
       required: true
   - type: textarea
