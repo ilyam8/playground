@@ -14,7 +14,7 @@ body:
     id: problem
     attributes:
       label: Problem
-      description:  |
+      description: |
         Is your feature request intended to solve a problem? If so, provide a description of the problem.
     validations:
       required: false
@@ -45,6 +45,11 @@ body:
       label: Value proposition.
       description: |
         Help us to understand why we need this feaure. Describe benefits that users receive if we implement this feature request.
+      value: |
+        1.
+        2.
+        3.
+        ...
     validations:
       required: true
   - type: textarea
