@@ -1,7 +1,7 @@
 # playground
 
-one
-two
+ONE
+TWO
 three
 four
-five
+FIVE
