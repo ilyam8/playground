@@ -1,0 +1,5 @@
+metric,scope,dimensions,unit,description,chart_type,labels,plugin,module
+node_allocatable_cpu_requests_utilization,node,requests,requests,"CPU requests utilization",line,"k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name",go.d,k8s_state
+node_allocatable_pods_usage,node,"available, allocated",pods,"Pods resource usage",stacked,"k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name",go.d,k8s_state
+node_schedulability,node,"schedulable, unschedulable",state,"Schedulability",line,"k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name",go.d,k8s_state
+pod_condition,pod,"pod_ready, pod_scheduled, pod_initialized, containers_ready",state,"Condition",line,"k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class",go.d,k8s_state
