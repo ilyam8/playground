@@ -1,0 +1,89 @@
+Name: apache
+Overview:
+  Title: Apache collector
+  Text: |
+    Apache is an open-source HTTP server for modern operating systems including UNIX and Windows.
+Setup:
+  Prerequisites:
+    List:
+      - Title: Enabling your Apache server
+        Text: |
+          - Ensure the [Apache status module](https://httpd.apache.org/docs/2.4/mod/mod_status.html) is enabled and configured for Apache instance.
+          - Ensure the Apache status module endpoint (default `server-status`) is available from the host containing the Apache integration.
+  Configuration:
+    Settings:
+      Folding:
+        Title: Configuration options
+        Enabled: true
+      List:
+        - Name: url
+          Description: Server URL.
+          Default: "`http://127.0.0.1/server-status?auto`"
+          Required: yes
+        - Name: username
+          Description: Username for basic HTTP authentication.
+          Default: "-"
+          Required: no
+        - Name: password
+          Description: Password for basic HTTP authentication.
+          Default: "-"
+          Required: no
+        - Name: timeout
+          Description: HTTP request timeout.
+          Default: 1
+          Required: no
+    Examples:
+      - Name: Basic
+        Description: Local and remote servers.
+        Folding:
+          Title: Example
+          Enabled: true
+        Data: |
+          jobs:
+            - name: local
+              url: http://127.0.0.1/server-status?auto
+
+            - name: remote
+              url: http://203.0.113.10/server-status?auto
+      - Name: Basic HTTP auth
+        Description: Local server with basic HTTP authentication.
+        Folding:
+          Title: Example
+          Enabled: true
+        Data: |
+          jobs:
+            - name: local
+              url: https://127.0.0.1/server-status?auto
+              username: foo
+              password: bar
+Troubleshooting:
+  Problems:
+    - Name: Problem accessing HTTPS Endpoint for Apache
+      Text: |
+        If you are having issues accessing the HTTPS endpoint for Apache, here are two possible solutions:
+
+        - Although you cannot ignore the SSL certification, you can set the config file parameters ca_bundle_file and ca_bundle_dir to point to an unsigned certificate in the Apache config file.
+        - Alternatively, you can use HTTP instead of HTTPS.
+Metrics:
+  Folding:
+    Title: Collected metrics
+    Enabled: true
+  List:
+    - Name: apache.connections
+      Scope: global
+      Dimensions: "connections"
+      Unit: connections
+      Description: Connections
+      Labels: "-"
+    - Name: apache.conns_async
+      Scope: global
+      Dimensions: "keepalive, closing, writing"
+      Unit: connections
+      Description: Active Connections
+      Labels: "-"
+    - Name: apache.workers
+      Scope: global
+      Dimensions: "idle, busy"
+      Unit: workers
+      Description: Workers Threads
+      Labels: "-"
