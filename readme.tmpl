@@ -1,0 +1,98 @@
+# {{ .Overview.Title }}
+
+{{ .Overview.Text }}
+## Metrics
+{{ if .Metrics.Folding.Enabled }}
+<details>
+<summary>{{ .Metrics.Folding.Title }}</summary>
+{{ end }}
+| Metrics   | Scope | Dimensions | Unit |
+| -------| ----------- | :-------: | :--------: |
+{{- range $_, $val := .Metrics.List }}
+| {{- $val.Name -}}| {{- $val.Scope -}} | {{- $val.Dimensions }} | {{- $val.Unit -}} |
+{{- end }}
+{{ if .Metrics.Folding.Enabled }}
+</details>
+{{- end }}
+
+## Setup
+
+## Prerequisites
+{{ range $_, $val := .Setup.Prerequisites.List }}
+### {{ $val.Title }}
+
+{{ $val.Text }}
+{{- end }}
+
+### Settings
+{{ if .Setup.Configuration.Settings.Folding.Enabled }}
+<details>
+<summary>{{ .Setup.Configuration.Settings.Folding.Title }}</summary>
+{{ end }}
+| Name   | Description | Default | Required |
+| :-------:| ----------- | :-------: | :--------: |
+{{- range $key, $val := .Setup.Configuration.Settings.List }}
+| {{- $val.Name -}}| {{- $val.Description -}} | {{- $val.Default }} | {{- $val.Required -}} |
+{{- end }}
+{{ if .Setup.Configuration.Settings.Folding.Enabled }}
+</details>
+{{- end }}
+
+### Configuration Examples
+
+{{- range $_, $val := .Setup.Configuration.Examples }}
+
+#### {{ $val.Name }}
+{{ $val.Description}}
+{{ if $val.Folding.Enabled }}
+<details>
+<summary>{{ $val.Folding.Title }}</summary>
+
+```yaml
+{{ $val.Data}}
+```
+
+</details>
+{{- else }}
+{{ $val.Description}}
+
+```yaml
+{{ $val.Data}}
+```
+{{- end }}
+{{- end }}
+
+## Troubleshooting
+
+### Debug mode
+
+To troubleshoot issues with the `{{ .Name }}` collector, run the `go.d.plugin` with the debug option enabled. The output
+should give you clues as to why the collector isn't working.
+
+- Navigate to the `plugins.d` directory, usually at `/usr/libexec/netdata/plugins.d/`. If that's not the case on
+  your system, open `netdata.conf` and look for the `plugins` setting under `[directories]`.
+
+  ```bash
+  cd /usr/libexec/netdata/plugins.d/
+  ```
+
+- Switch to the `netdata` user.
+
+  ```bash
+  sudo -u netdata -s
+  ```
+
+- Run the `go.d.plugin` to debug the collector:
+
+  ```bash
+  ./go.d.plugin -d -m apache
+  ```
+{{ if .Troubleshooting.Problems }}
+### Common Problems
+{{- range $key, $val := .Troubleshooting.Problems }}
+
+#### {{ $val.Name}}
+
+{{ $val.Text}}
+{{- end }}
+{{- end }}
