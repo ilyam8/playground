@@ -1,63 +1,67 @@
-# {{ .Overview.Title }}
+# {{ .overview.title }}
 
-{{ .Overview.Text }}
+{{ .overview.text }}
 ## Metrics
-{{ if .Metrics.Folding.Enabled }}
+{{ if .metrics.folding.enabled }}
 <details>
-<summary>{{ .Metrics.Folding.Title }}</summary>
+<summary>{{ .metrics.folding.title }}</summary>
 {{ end }}
 | Metrics   | Scope | Dimensions | Unit |
 | -------| ----------- | :-------: | :--------: |
-{{- range $_, $val := .Metrics.List }}
-| {{- $val.Name -}}| {{- $val.Scope -}} | {{- $val.Dimensions }} | {{- $val.Unit -}} |
+{{- range $_, $val := .metrics.list }}
+  {{- $dimList := list }}
+  {{- range $_, $dim := $val.dimensions }}
+  {{- $dimList = append $dimList $dim.name}}
+  {{- end }}
+| {{- $val.name -}}| {{- $val.scope -}} | {{- $dimList | join ", " }} | {{- $val.unit -}} |
 {{- end }}
-{{ if .Metrics.Folding.Enabled }}
+{{ if .metrics.folding.enabled }}
 </details>
 {{- end }}
 
 ## Setup
 
 ## Prerequisites
-{{ range $_, $val := .Setup.Prerequisites.List }}
-### {{ $val.Title }}
+{{ range $_, $val := .setup.prerequisites.list }}
+### {{ $val.title }}
 
-{{ $val.Text }}
+{{ $val.text }}
 {{- end }}
 
 ### Settings
-{{ if .Setup.Configuration.Settings.Folding.Enabled }}
+{{ if .setup.configuration.options.folding.enabled }}
 <details>
-<summary>{{ .Setup.Configuration.Settings.Folding.Title }}</summary>
+<summary>{{ .setup.configuration.options.folding.title }}</summary>
 {{ end }}
 | Name   | Description | Default | Required |
 | :-------:| ----------- | :-------: | :--------: |
-{{- range $key, $val := .Setup.Configuration.Settings.List }}
-| {{- $val.Name -}}| {{- $val.Description -}} | {{- $val.Default }} | {{- $val.Required -}} |
+{{- range $key, $val := .setup.configuration.options.list }}
+| {{- $val.name -}}| {{- $val.description -}} | {{- $val.default }} | {{- $val.required -}} |
 {{- end }}
-{{ if .Setup.Configuration.Settings.Folding.Enabled }}
+{{ if .setup.configuration.options.folding.enabled }}
 </details>
 {{- end }}
 
 ### Configuration Examples
 
-{{- range $_, $val := .Setup.Configuration.Examples }}
+{{- range $_, $val := .setup.configuration.examples.list }}
 
-#### {{ $val.Name }}
-{{ if $val.Folding.Enabled }}
-{{ $val.Description}}
+#### {{ $val.name }}
+{{ if $val.folding.enabled }}
+{{ $val.description}}
 <details>
-<summary>{{ $val.Folding.Title }}</summary>
+<summary>{{ $val.folding.title }}</summary>
 
 ```yaml
-{{ $val.Data -}}
+{{ $val.data -}}
 ```
 
 </details>
 {{- else }}
-{{ $val.Description}}
+{{ $val.description}}
 
 ```yaml
-{{ $val.Data -}}
+{{ $val.data -}}
 ```
 {{- end }}
 {{- end }}
@@ -66,7 +70,7 @@
 
 ### Debug mode
 
-To troubleshoot issues with the `{{ .Name }}` collector, run the `go.d.plugin` with the debug option enabled. The output
+To troubleshoot issues with the `{{ .name }}` collector, run the `go.d.plugin` with the debug option enabled. The output
 should give you clues as to why the collector isn't working.
 
 - Navigate to the `plugins.d` directory, usually at `/usr/libexec/netdata/plugins.d/`. If that's not the case on
@@ -87,12 +91,12 @@ should give you clues as to why the collector isn't working.
   ```bash
   ./go.d.plugin -d -m apache
   ```
-{{ if .Troubleshooting.Problems }}
+{{ if .troubleshooting.problems.list }}
 ### Common Problems
-{{- range $key, $val := .Troubleshooting.Problems }}
+{{- range $key, $val := .troubleshooting.problems.list }}
 
-#### {{ $val.Name}}
+#### {{ $val.name}}
 
-{{ $val.Text}}
+{{ $val.text}}
 {{- end }}
 {{- end }}
