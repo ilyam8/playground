@@ -43,13 +43,13 @@
 {{- range $_, $val := .Setup.Configuration.Examples }}
 
 #### {{ $val.Name }}
-{{ $val.Description}}
 {{ if $val.Folding.Enabled }}
+{{ $val.Description}}
 <details>
 <summary>{{ $val.Folding.Title }}</summary>
 
 ```yaml
-{{ $val.Data}}
+{{ $val.Data -}}
 ```
 
 </details>
@@ -57,7 +57,7 @@
 {{ $val.Description}}
 
 ```yaml
-{{ $val.Data}}
+{{ $val.Data -}}
 ```
 {{- end }}
 {{- end }}
