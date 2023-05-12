@@ -2,7 +2,7 @@ name: apache
 overview:
   title: Apache collector
   text: |
-    Apache is an open-source HTTP server for modern operating systems including UNIX and Windows.
+    [Apache](https://httpd.apache.org/) is an open-source HTTP server for modern operating systems including UNIX and Windows.
 setup:
   prerequisites:
     list:
