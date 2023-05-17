@@ -1,5 +1,39 @@
 ## Release highlights <a id="v1380-release-highlights"></a>
 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+We completely reworked our custom-made, time 
+
 ### Dramatic performance and stability improvements, with a smaller agent footprint <a id="v1380-dbenginev2"></a>
 
 We completely reworked our custom-made, time series database (dbengine), resulting in stunning improvements to performance, scalability, and stability, while at the same time significantly reducing the [agent memory requirements](https://github.com/netdata/netdata/tree/master/database/engine#memory-requirements). 
