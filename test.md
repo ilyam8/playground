@@ -7,17 +7,29 @@ This module will monitor one or more Apache servers, depending on your configura
 
 ## Metrics
 
+| Metric                       |                            Dimensions                             |     Units     |                                                                                               Units                                                                                                |
+|------------------------------|:-----------------------------------------------------------------:|:-------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| client_connections_rate      |                         accepted, dropped                         | connections/s | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
+| client_connections_count     |                           active, idle                            |  connections  | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
+| ssl_handshakes_rate          |                        successful, failed                         | handshakes/s  | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
+| ssl_handshakes_failures_rate | no_common_protocol, no_common_cipher, timeout, peer_rejected_cert |  failures/s   | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
+| ssl_verification_errors_rate |   no_cert, expired_cert, revoked_cert, hostname_mismatch, other   |   errors/s    | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
+| ssl_session_reuses_rate      |                            ssl_session                            |   reuses/s    | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
+| http_requests_rate           |                             requests                              |  requests/s   | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
+| http_requests_count          |                             requests                              |   requests    | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
+| uptime                       |                              uptime                               |    seconds    | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
+
 - global: qwqw
 - http_upstream_name: qqq
 - http_upstream_name: qqq
 
 ### global
 
-#### Labels:
+Labels
 
 No labels.
 
-#### Metrics:
+Metrics
 
 | Metric                       |                            Dimensions                             |     Units     |
 |------------------------------|:-----------------------------------------------------------------:|:-------------:|
