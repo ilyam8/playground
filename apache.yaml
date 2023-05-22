@@ -1,8 +1,12 @@
 name: apache
+title: Apache collector
 overview:
-  title: Apache collector
-  text: |
-    [Apache](https://httpd.apache.org/) is an open-source HTTP server for modern operating systems including UNIX and Windows.
+  application:
+    description: |
+      Apache is an open-source HTTP server for modern operating systems including UNIX and Windows.
+  collector:
+    description: |
+      This module will monitor one or more Apache servers, depending on your configuration.
 setup:
   prerequisites:
     list:
@@ -12,14 +16,28 @@ setup:
           - Ensure the Apache status module endpoint (default `server-status`) is available from the host containing the Apache integration.
   configuration:
     options:
+      description: |
+        The following options can be defined globally: update_every, autodetection_retry.
       folding:
-        title: Configuration options
+        title: See all options
         enabled: true
       list:
+        - name: update_every
+          description: Data collection frequency.
+          default: 1
+          required: no
+        - name: autodetection_retry
+          description: Re-check interval in seconds. Zero means not to schedule re-check.
+          default: 0
+          required: no
         - name: url
           description: Server URL.
           default: "`http://127.0.0.1/server-status?auto`"
           required: yes
+        - name: timeout
+          description: HTTP request timeout.
+          default: 1
+          required: no
         - name: username
           description: Username for basic HTTP authentication.
           default: "-"
@@ -28,9 +46,45 @@ setup:
           description: Password for basic HTTP authentication.
           default: "-"
           required: no
-        - name: timeout
-          description: HTTP request timeout.
-          default: 1
+        - name: proxy_username
+          description: Username for proxy basic HTTP authentication.
+          default: "-"
+          required: no
+        - name: proxy_password
+          description: Password for proxy basic HTTP authentication.
+          default: "-"
+          required: no
+        - name: method
+          description: HTTP request method.
+          default: "GET"
+          required: no
+        - name: body
+          description: HTTP request body.
+          default: "-"
+          required: no
+        - name: headers
+          description: HTTP request headers.
+          default: "-"
+          required: no
+        - name: not_follow_redirects
+          description: Whether to not follow redirects from the server.
+          default: no
+          required: no
+        - name: tls_skip_verify
+          description: Whether to skip verifying server's certificate chain and hostname.
+          default: no
+          required: no
+        - name: tls_ca
+          description: Certificate authority that client use when verifying server certificates.
+          default: "-"
+          required: no
+        - name: tls_cert
+          description: Client tls certificate.
+          default: "-"
+          required: no
+        - name: tls_key
+          description: Client tls key.
+          default: "-"
           required: no
     examples:
       list:
@@ -59,36 +113,32 @@ setup:
                 password: bar
 troubleshooting:
   problems:
-    list:
-      - name: Problem accessing HTTPS Endpoint for Apache
-        text: |
-          If you are having issues accessing the HTTPS endpoint for Apache, here are two possible solutions:
-
-          - Although you cannot ignore the SSL certification, you can set the config file parameters ca_bundle_file and ca_bundle_dir to point to an unsigned certificate in the Apache config file.
-          - Alternatively, you can use HTTP instead of HTTPS.
+    list: []
 metrics:
   folding:
-    title: Collected metrics
-    enabled: true
-  list:
-    - name: apache.connections
-      scope: global
-      dimensions:
-        - name: connections
-      unit: connections
-      description: Connections
-    - name: apache.conns_async
-      scope: global
-      dimensions:
-        - name: keepalive
-        - name: closing
-        - name: writing
-      unit: connections
-      description: Active Connections
-    - name: apache.workers
-      scope: global
-      dimensions:
-        - name: idle
-        - name: busy
-      unit: workers
-      description: Workers Threads
+    title: Metrics
+    enabled: false
+  description: TBD
+  scope:
+    - name: global
+      description: "Global scope"
+      labels: []
+      metrics:
+        - name: apache.connections
+          description: Connections
+          unit: connections
+          dimensions:
+            - name: connections
+        - name: apache.conns_async
+          dimensions:
+            - name: keepalive
+            - name: closing
+            - name: writing
+          unit: connections
+          description: Active Connections
+        - name: apache.workers
+          dimensions:
+            - name: idle
+            - name: busy
+          unit: workers
+          description: Workers Threads
