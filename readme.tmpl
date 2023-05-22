@@ -1,24 +1,50 @@
-# {{ .overview.title }}
+# {{ .title }}
 
-{{ .overview.text }}
-## Metrics
+## Overview
+
+{{ .overview.application.description }}
+{{ .overview.collector.description }}
+## Collected metrics
+
+{{ .metrics.description }}
 {{ if .metrics.folding.enabled }}
 <details>
 <summary>{{ .metrics.folding.title }}</summary>
 {{ end }}
-| Metrics   | Scope | Dimensions | Unit |
-| -------| ----------- | :-------: | :--------: |
-{{- range $_, $val := .metrics.list }}
+
+{{- range $_, $scope := .metrics.scope }}
+
+### {{ $scope.name }}
+
+{{ $scope.description }}
+{{ if not $scope.labels }}
+This scope no labels.
+{{ else }}
+Labels:
+
+| Label   | Description |
+| -------| -----------  |
+{{ range $_, $label := $scope.labels }}
+| {{- $label.name -}}| {{- $label.description -}} |
+{{ end }}
+{{ end }}
+Metrics:
+
+| Metric   | Dimensions | Unit |
+| -------|  :-------: | :--------: |
+{{- range $_, $metric := $scope.metrics }}
   {{- $dimList := list }}
-  {{- range $_, $dim := $val.dimensions }}
+  {{- range $_, $dim := $metric.dimensions }}
   {{- $dimList = append $dimList $dim.name}}
   {{- end }}
-| {{- $val.name -}}| {{- $val.scope -}} | {{- $dimList | join ", " }} | {{- $val.unit -}} |
-{{- end }}
-{{ if .metrics.folding.enabled }}
-</details>
+| {{- $metric.name -}}| {{- $dimList | join ", " }} | {{- $metric.unit -}} |
 {{- end }}
 
+{{- end }}
+
+{{ if .metrics.folding.enabled }}
+</details>
+{{ end }}
 ## Setup
 
 ## Prerequisites
@@ -28,8 +54,24 @@
 {{ $val.text }}
 {{- end }}
 
-### Settings
-{{ if .setup.configuration.options.folding.enabled }}
+### Configuration
+
+#### File format
+
+This file is in YAML format. Generally the format is:
+
+```yaml
+update_every: 1
+autodetection_retry: 0
+jobs:
+  - name: some_name1
+  - name: some_name1
+```
+
+#### Options
+
+{{ .setup.configuration.options.description }}
+{{ if .setup.configuration.options.folding.enabled -}}
 <details>
 <summary>{{ .setup.configuration.options.folding.title }}</summary>
 {{ end }}
@@ -42,11 +84,11 @@
 </details>
 {{- end }}
 
-### Configuration Examples
+#### Examples
 
 {{- range $_, $val := .setup.configuration.examples.list }}
 
-#### {{ $val.name }}
+##### {{ $val.name }}
 {{ if $val.folding.enabled }}
 {{ $val.description}}
 <details>
