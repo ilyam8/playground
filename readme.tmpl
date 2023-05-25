@@ -47,9 +47,9 @@ Metrics:
 {{ end }}
 ## Setup
 
-## Prerequisites
+### Prerequisites
 {{ range $_, $val := .setup.prerequisites.list }}
-### {{ $val.title }}
+#### {{ $val.title }}
 
 {{ $val.text }}
 {{- end }}
@@ -75,10 +75,10 @@ jobs:
 <details>
 <summary>{{ .setup.configuration.options.folding.title }}</summary>
 {{ end }}
-| Name   | Description | Default | Required |
-| :-------:| ----------- | :-------: | :--------: |
+| Name   | Description | Default |
+| :-------:| ----------- | :-------: |
 {{- range $key, $val := .setup.configuration.options.list }}
-| {{- $val.name -}}| {{- $val.description -}} | {{- $val.default }} | {{- $val.required -}} |
+| {{- $val.name -}}| {{- $val.description -}} | {{- $val.default }} |
 {{- end }}
 {{ if .setup.configuration.options.folding.enabled }}
 </details>
