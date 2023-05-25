@@ -1,217 +1,36 @@
 # Apache collector
 
 ## Overview
+
 Apache is an open-source HTTP server for modern operating systems including UNIX and Windows.
 
 This module will monitor one or more Apache servers, depending on your configuration.
 
-## Metrics
+## Collected metrics
 
-| Metric                       |                            Dimensions                             |     Units     |                                                                                               Units                                                                                                |
-|------------------------------|:-----------------------------------------------------------------:|:-------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| client_connections_rate      |                         accepted, dropped                         | connections/s | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
-| client_connections_count     |                           active, idle                            |  connections  | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
-| ssl_handshakes_rate          |                        successful, failed                         | handshakes/s  | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
-| ssl_handshakes_failures_rate | no_common_protocol, no_common_cipher, timeout, peer_rejected_cert |  failures/s   | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
-| ssl_verification_errors_rate |   no_cert, expired_cert, revoked_cert, hostname_mismatch, other   |   errors/s    | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
-| ssl_session_reuses_rate      |                            ssl_session                            |   reuses/s    | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
-| http_requests_rate           |                             requests                              |  requests/s   | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
-| http_requests_count          |                             requests                              |   requests    | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
-| uptime                       |                              uptime                               |    seconds    | k8s_kind, k8s_cluster_id, k8s_cluster_name, k8s_node_name, k8s_namespace, k8s_controller_kind, k8s_controller_name, k8s_pod_uid, k8s_pod_name, k8s_qos_class, k8s_container_id, k8s_container_name |
+TBD
 
-- global: qwqw
-- http_upstream_name: qqq
-- http_upstream_name: qqq
 
 ### global
 
-Labels
+Global scope
 
-No labels.
+This scope no labels.
 
-Metrics
+Metrics:
 
-| Metric                       |                            Dimensions                             |     Units     |
-|------------------------------|:-----------------------------------------------------------------:|:-------------:|
-| client_connections_rate      |                         accepted, dropped                         | connections/s |
-| client_connections_count     |                           active, idle                            |  connections  |
-| ssl_handshakes_rate          |                        successful, failed                         | handshakes/s  |
-| ssl_handshakes_failures_rate | no_common_protocol, no_common_cipher, timeout, peer_rejected_cert |  failures/s   |
-| ssl_verification_errors_rate |   no_cert, expired_cert, revoked_cert, hostname_mismatch, other   |   errors/s    |
-| ssl_session_reuses_rate      |                            ssl_session                            |   reuses/s    |
-| http_requests_rate           |                             requests                              |  requests/s   |
-| http_requests_count          |                             requests                              |   requests    |
-| uptime                       |                              uptime                               |    seconds    |
+| Metric             |         Dimensions          |    Unit     |
+|--------------------|:---------------------------:|:-----------:|
+| apache.connections |         connections         | connections |
+| apache.conns_async | keepalive, closing, writing | connections |
+| apache.workers     |         idle, busy          |   workers   |
 
-
-### http server zone
-
-Labels
-
-| Label            | Description                                                  |
-|------------------|--------------------------------------------------------------|
-| http_server_zone | this label will monitor one or more Apache servers, depends. |
-
-Metrics
-
-| Metric                                         |       Dimensions        |    Units    |
-|------------------------------------------------|:-----------------------:|:-----------:|
-| http_server_zone_requests_rate                 |        requests         | requests/s  |
-| http_server_zone_responses_per_code_class_rate | 1xx, 2xx, 3xx, 4xx, 5xx | responses/s |
-| http_server_zone_traffic_rate                  |     received, sent      |   bytes/s   |
-| http_server_zone_requests_processing_count     |       processing        |  requests   |
-| http_server_zone_requests_discarded_rate       |        discarded        | requests/s  |
-
-### http location zone
-
-Labels
-
-| Name               | Description                                                  |
-|--------------------|--------------------------------------------------------------|
-| http_location_zone | this label will monitor one or more Apache servers, depends. |
-
-Metrics
-
-| Metric                                           |       Dimensions        |    Units    |
-|--------------------------------------------------|:-----------------------:|:-----------:|
-| http_location_zone_requests_rate                 |        requests         | requests/s  |
-| http_location_zone_responses_per_code_class_rate | 1xx, 2xx, 3xx, 4xx, 5xx | responses/s |
-| http_location_zone_traffic_rate                  |     received, sent      |   bytes/s   |
-| http_location_zone_requests_discarded_rate       |        discarded        | requests/s  |
-
-### http upstream
-
-Labels
-
-| Name               | Description                                                  |
-|--------------------|--------------------------------------------------------------|
-| http_upstream_name | this label will monitor one or more Apache servers, depends. |
-| http_upstream_zone | this label will monitor one or more Apache servers, depends. |
-
-Metrics
-
-| Metric                        | Dimensions |    Units    |
-|-------------------------------|:----------:|:-----------:|
-| http_upstream_peers_count     |   peers    |    peers    |
-| http_upstream_zombies_count   |   zombie   |   servers   |
-| http_upstream_keepalive_count | keepalive  | connections |
-
-### http upstream server
-
-Labels
-
-| Name                         | Description                                                  |
-|------------------------------|--------------------------------------------------------------|
-| http_upstream_name           | this label will monitor one or more Apache servers, depends. |
-| http_upstream_zone           | this label will monitor one or more Apache servers, depends. |
-| http_upstream_server_address | this label will monitor one or more Apache servers, depends. |
-| http_upstream_server_name    | this label will monitor one or more Apache servers, depends. |
-
-Metrics
-
-| Metric                                             |                    Dimensions                    |    Units     |
-|----------------------------------------------------|:------------------------------------------------:|:------------:|
-| http_upstream_server_requests_rate                 |                     requests                     |  requests/s  |
-| http_upstream_server_responses_per_code_class_rate |             1xx, 2xx, 3xx, 4xx, 5xx              | responses/s  |
-| http_upstream_server_response_time                 |                     response                     | milliseconds |
-| http_upstream_server_response_header_time          |                      header                      | milliseconds |
-| http_upstream_server_traffic_rate                  |                  received, sent                  |   bytes/s    |
-| http_upstream_server_state                         | up, down, draining, unavail, checking, unhealthy |    state     |
-| http_upstream_server_connections_count             |                      active                      | connections  |
-| http_upstream_server_downtime                      |                     downtime                     |   seconds    |
-
-### http cache
-
-Labels
-
-| Name       | Description                                                  |
-|------------|--------------------------------------------------------------|
-| http_cache | this label will monitor one or more Apache servers, depends. |
-
-Metrics
-
-| Metric           |       Dimensions        |    Units    |
-|------------------|:-----------------------:|:-----------:|
-| http_cache_state |       warm, cold        |    state    |
-| http_cache_iops  | served, written, bypass | responses/s |
-| http_cache_io    | served, written, bypass |   bytes/s   |
-| http_cache_size  |          size           |    bytes    |
-
-### stream server zone
-
-Labels
-
-| Name               | Description                                                  |
-|--------------------|--------------------------------------------------------------|
-| stream_server_zone | this label will monitor one or more Apache servers, depends. |
-
-Metrics
-
-| Metric                                          |   Dimensions   |     Units     |
-|-------------------------------------------------|:--------------:|:-------------:|
-| stream_server_zone_connections_rate             |    accepted    | connections/s |
-| stream_server_zone_sessions_per_code_class_rate | 2xx, 4xx, 5xx  |  sessions/s   |
-| stream_server_zone_traffic_rate                 | received, sent |    bytes/s    |
-| stream_server_zone_connections_processing_count |   processing   |  connections  |
-| stream_server_zone_connections_discarded_rate   |   discarded    | connections/s |
-
-### stream upstream
-
-Labels
-
-| Name                 | Description                                                  |
-|----------------------|--------------------------------------------------------------|
-| stream_upstream_name | this label will monitor one or more Apache servers, depends. |
-| stream_upstream_zone | this label will monitor one or more Apache servers, depends. |
-
-Metrics
-
-| Metric                        | Dimensions |  Units  |
-|-------------------------------|:----------:|:-------:|
-| stream_upstream_peers_count   |   peers    |  peers  |
-| stream_upstream_zombies_count |   zombie   | servers |
-
-### stream upstream
-
-Labels
-
-| Name                           | Description                                                  |
-|--------------------------------|--------------------------------------------------------------|
-| stream_upstream_name           | this label will monitor one or more Apache servers, depends. |
-| stream_upstream_zone           | this label will monitor one or more Apache servers, depends. |
-| stream_upstream_server_address | this label will monitor one or more Apache servers, depends. |
-| stream_upstream_server_name    | this label will monitor one or more Apache servers, depends. |
-
-Metrics
-
-| Metric                                   |               Dimensions               |     Units     |
-|------------------------------------------|:--------------------------------------:|:-------------:|
-| stream_upstream_server_connections_rate  |               forwarded                | connections/s |
-| stream_upstream_server_traffic_rate      |             received, sent             |    bytes/s    |
-| stream_upstream_server_state             | up, down, unavail, checking, unhealthy |     state     |
-| stream_upstream_server_downtime          |                downtime                |    seconds    |
-| stream_upstream_server_connections_count |                 active                 |  connections  |
-
-### stream upstream
-
-Labels
-
-| Name          | Description                                                  |
-|---------------|--------------------------------------------------------------|
-| resolver_zone | this label will monitor one or more Apache servers, depends. |
-
-Metrics
-
-| Metric                                             |                                Dimensions                                |     Units     |
-|----------------------------------------------------|:------------------------------------------------------------------------:|:-------------:|
-| resolver_zone_requests_rate                        |                             name, srv, addr                              |  requests/s   |
-| resolver_zone_responses_rate                       | noerror, formerr, servfail, nxdomain, notimp, refused, timedout, unknown |  responses/s  |
 
 ## Setup
 
-## Prerequisites
+### Prerequisites
 
-### Enabling your Apache server
+#### Enabling your Apache server
 
 - Ensure the [Apache status module](https://httpd.apache.org/docs/2.4/mod/mod_status.html) is enabled and configured for Apache instance.
 - Ensure the Apache status module endpoint (default `server-status`) is available from the host containing the Apache integration.
@@ -236,16 +55,26 @@ jobs:
 The following options can be defined globally: update_every, autodetection_retry.
 
 <details>
-<summary>See all options</summary>
+<summary>All options</summary>
 
-| Name   | Description | Default | Required |
-| :-------:| ----------- | :-------: | :--------: |
-|update_every|Data collection frequency.|1 |no|
-|autodetection_retry|Re-check interval in seconds. Zero means not to schedule re-check.|0 |no|
-|url|Server URL.|`http://127.0.0.1/server-status?auto` |yes|
-|username|Username for basic HTTP authentication.|- |no|
-|password|Password for basic HTTP authentication.|- |no|
-|timeout|HTTP request timeout.|1 |no|
+|         Name         | Description                                                               |                Default                |
+|:--------------------:|---------------------------------------------------------------------------|:-------------------------------------:|
+|     update_every     | Data collection frequency.                                                |                   1                   |
+| autodetection_retry  | Re-check interval in seconds. Zero means not to schedule re-check.        |                   0                   |
+|         url          | Server URL.                                                               | `http://127.0.0.1/server-status?auto` |
+|       timeout        | HTTP request timeout.                                                     |                   1                   |
+|       username       | Username for basic HTTP authentication.                                   |                   -                   |
+|       password       | Password for basic HTTP authentication.                                   |                   -                   |
+|    proxy_username    | Username for proxy basic HTTP authentication.                             |                   -                   |
+|    proxy_password    | Password for proxy basic HTTP authentication.                             |                   -                   |
+|        method        | HTTP request method.                                                      |                  GET                  |
+|         body         | HTTP request body.                                                        |                   -                   |
+|       headers        | HTTP request headers.                                                     |                   -                   |
+| not_follow_redirects | Whether to not follow redirects from the server.                          |                  no                   |
+|   tls_skip_verify    | Whether to skip verifying server's certificate chain and hostname.        |                  no                   |
+|        tls_ca        | Certificate authority that client use when verifying server certificates. |                   -                   |
+|       tls_cert       | Client tls certificate.                                                   |                   -                   |
+|       tls_key        | Client tls key.                                                           |                   -                   |
 
 </details>
 
