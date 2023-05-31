@@ -48,10 +48,14 @@ Metrics:
 ## Setup
 
 ### Prerequisites
+{{ if .setup.prerequisites.list }}
 {{ range $_, $val := .setup.prerequisites.list }}
 #### {{ $val.title }}
 
 {{ $val.text }}
+{{- end }}
+{{ else }}
+No action required.
 {{- end }}
 
 ### Configuration
