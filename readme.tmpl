@@ -135,7 +135,7 @@ should give you clues as to why the collector isn't working.
 - Run the `go.d.plugin` to debug the collector:
 
   ```bash
-  ./go.d.plugin -d -m apache
+  ./go.d.plugin -d -m {{ .name }}
   ```
 {{ if .troubleshooting.problems.list }}
 ### Common Problems
