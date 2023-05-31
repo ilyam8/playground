@@ -24,9 +24,9 @@ Labels:
 
 | Label   | Description |
 | -------| -----------  |
-{{ range $_, $label := $scope.labels }}
+{{- range $_, $label := $scope.labels }}
 | {{- $label.name -}}| {{- $label.description -}} |
-{{ end }}
+{{- end }}
 {{ end }}
 Metrics:
 
