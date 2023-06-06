@@ -32,23 +32,23 @@ Metrics:
 {{ if hasKey $.metrics "availability" }}
 {{- $availList := list }}
 {{- range $_, $name := $.metrics.availability }}
-{{- $availList = append $availList $name}}
+    {{- $availList = append $availList $name}}
 {{- end }}
 | Metric   | Dimensions | Unit | {{- $availList | join "/" }} |
 | -------|  :-------: | :--------: | :--------: |
 {{- range $_, $metric := $scope.metrics }}
-  {{- $dimList := list }}
-  {{- range $_, $dim := $metric.dimensions }}
-  {{- $dimList = append $dimList $dim.name}}
-  {{- end }}
-  {{- $metricAvailList := list }}
-  {{- range $_, $name := $availList }}
-    {{- if hasKey $metric "availability" }}
-    {{- $metricAvailList = append $metricAvailList (ternary "+" "-" (has $name $metric.availability))}}
-    {{- else }}
-      {{- $metricAvailList = append $metricAvailList "-"}}
+    {{- $dimList := list }}
+    {{- range $_, $dim := $metric.dimensions }}
+        {{- $dimList = append $dimList $dim.name}}
     {{- end }}
-  {{- end }}
+    {{- $metricAvailList := list }}
+    {{- range $_, $name := $availList }}
+        {{- if and (hasKey $metric "availability") (has $name $metric.availability) }}
+            {{- $metricAvailList = append $metricAvailList "+" }}
+        {{- else }}
+            {{- $metricAvailList = append $metricAvailList "-" }}
+        {{- end }}
+    {{- end }}
 | {{- $metric.name -}}| {{- $dimList | join ", " }} | {{- $metric.unit -}} | {{ $metricAvailList | join " " }} |
 {{- end }}
 {{ else }}
@@ -57,7 +57,7 @@ Metrics:
 {{- range $_, $metric := $scope.metrics }}
   {{- $dimList := list }}
   {{- range $_, $dim := $metric.dimensions }}
-  {{- $dimList = append $dimList $dim.name}}
+    {{- $dimList = append $dimList $dim.name}}
   {{- end }}
 | {{- $metric.name -}}| {{- $dimList | join ", " }} | {{- $metric.unit -}} |
 {{- end }}
@@ -121,11 +121,12 @@ sudo ./edit-config go.d/{{ .name }}.conf
 </details>
 {{- end }}
 
-{{- range $key, $val := .setup.configuration.options.list }}
-{{ if hasKey $val "details" }}
+{{ range $key, $val := .setup.configuration.options.list }}
+{{- if hasKey $val "details" -}}
 ##### {{$val.name }}
+
 {{ $val.details }}
-{{- end }}
+{{ end }}
 {{- end }}
 
 #### Examples
