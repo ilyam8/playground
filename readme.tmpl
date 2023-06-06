@@ -29,7 +29,29 @@ Labels:
 {{- end }}
 {{ end }}
 Metrics:
-
+{{ if hasKey $.metrics "availability" }}
+{{- $availList := list }}
+{{- range $_, $name := $.metrics.availability }}
+{{- $availList = append $availList $name}}
+{{- end }}
+| Metric   | Dimensions | Unit | {{- $availList | join "/" }} |
+| -------|  :-------: | :--------: | :--------: |
+{{- range $_, $metric := $scope.metrics }}
+  {{- $dimList := list }}
+  {{- range $_, $dim := $metric.dimensions }}
+  {{- $dimList = append $dimList $dim.name}}
+  {{- end }}
+  {{- $metricAvailList := list }}
+  {{- range $_, $name := $availList }}
+    {{- if hasKey $metric "availability" }}
+    {{- $metricAvailList = append $metricAvailList (ternary "+" "-" (has $name $metric.availability))}}
+    {{- else }}
+      {{- $metricAvailList = append $metricAvailList "-"}}
+    {{- end }}
+  {{- end }}
+| {{- $metric.name -}}| {{- $dimList | join ", " }} | {{- $metric.unit -}} | {{ $metricAvailList | join " " }} |
+{{- end }}
+{{ else }}
 | Metric   | Dimensions | Unit |
 | -------|  :-------: | :--------: |
 {{- range $_, $metric := $scope.metrics }}
@@ -39,6 +61,7 @@ Metrics:
   {{- end }}
 | {{- $metric.name -}}| {{- $dimList | join ", " }} | {{- $metric.unit -}} |
 {{- end }}
+{{ end }}
 
 {{- end }}
 
@@ -60,9 +83,11 @@ No action required.
 
 ### Configuration
 
-#### File format
+#### File
 
-This file is in YAML format. Generally the format is:
+The configuration file name is `go.d/{{ .name }}.conf`.
+
+The file format is YAML. Generally the format is:
 
 ```yaml
 update_every: 1
@@ -72,6 +97,14 @@ jobs:
   - name: some_name1
 ```
 
+You can edit the configuration file using the `edit-config` script from the
+Netdata [config directory](https://github.com/netdata/netdata/blob/master/docs/configure/nodes.md#the-netdata-config-directory).
+
+```bash
+cd /etc/netdata 2>/dev/null || cd /opt/netdata/etc/netdata
+sudo ./edit-config go.d/{{ .name }}.conf
+```
+
 #### Options
 
 {{ .setup.configuration.options.description }}
@@ -79,13 +112,20 @@ jobs:
 <details>
 <summary>{{ .setup.configuration.options.folding.title }}</summary>
 {{ end }}
-| Name   | Description | Default |
-| :-------:| ----------- | :-------: |
+| Name   | Description | Default | Required |
+| :-------:| ----------- | :-------: | :-------: |
 {{- range $key, $val := .setup.configuration.options.list }}
-| {{- $val.name -}}| {{- $val.description -}} | {{- $val.default }} |
+| {{- $val.name -}}| {{- $val.description -}} | {{- $val.default }} | {{ ternary "yes" "" $val.required }} |
 {{- end }}
 {{ if .setup.configuration.options.folding.enabled }}
 </details>
+{{- end }}
+
+{{- range $key, $val := .setup.configuration.options.list }}
+{{ if hasKey $val "details" }}
+##### {{$val.name }}
+{{ $val.details }}
+{{- end }}
 {{- end }}
 
 #### Examples
