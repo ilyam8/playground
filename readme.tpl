@@ -134,10 +134,10 @@ sudo ./edit-config go.d/{{ .name }}.conf
 {{- range $_, $val := .setup.configuration.examples.list }}
 
 ##### {{ $val.name }}
-{{ if $val.folding.enabled }}
+{{ if $.setup.configuration.examples.folding.enabled }}
 {{ $val.description}}
 <details>
-<summary>{{ $val.folding.title }}</summary>
+<summary>{{ $.setup.configuration.examples.folding.title }}</summary>
 
 ```yaml
 {{ $val.data -}}
