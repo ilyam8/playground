@@ -5,6 +5,9 @@
 {{ .overview.application.description }}
 {{ .overview.collector.description }}
 ## Collected metrics
+Metrics grouped by *scope*.
+
+The scope defines the instance that the metric belongs to. An instance is uniquely identified by a set of labels.
 
 {{ .metrics.description }}
 {{ if .metrics.folding.enabled }}
