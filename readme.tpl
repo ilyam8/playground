@@ -90,7 +90,7 @@ No action required.
 
 The configuration file name is `go.d/{{ .name }}.conf`.
 
-The file format is YAML. Generally the format is:
+The file format is YAML. Generally, the format is:
 
 ```yaml
 update_every: 1
