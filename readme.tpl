@@ -37,8 +37,8 @@ Metrics:
 {{- range $_, $name := $.metrics.availability }}
     {{- $availList = append $availList $name}}
 {{- end }}
-| Metric   | Dimensions | Unit | {{- $availList | join "/" }} |
-| -------|  :-------: | :--------: | :--------: |
+| Metric   | Description | Dimensions | Unit | {{- $availList | join "/" }} |
+| -------|  :------- | :--------: | :--------: | :--------: |
 {{- range $_, $metric := $scope.metrics }}
     {{- $dimList := list }}
     {{- range $_, $dim := $metric.dimensions }}
@@ -52,17 +52,17 @@ Metrics:
             {{- $metricAvailList = append $metricAvailList "-" }}
         {{- end }}
     {{- end }}
-| {{- $metric.name -}}| {{- $dimList | join ", " }} | {{- $metric.unit -}} | {{ $metricAvailList | join " " }} |
+| {{- $metric.name -}}| {{- $metric.description }} | {{- $dimList | join ", " }} | {{- $metric.unit -}} | {{ $metricAvailList | join " " }} |
 {{- end }}
 {{ else }}
-| Metric   | Dimensions | Unit |
-| -------|  :-------: | :--------: |
+| Metric   | Description | Dimensions | Unit |
+| -------|  :------- | :--------: | :--------: |
 {{- range $_, $metric := $scope.metrics }}
   {{- $dimList := list }}
   {{- range $_, $dim := $metric.dimensions }}
     {{- $dimList = append $dimList $dim.name}}
   {{- end }}
-| {{- $metric.name -}}| {{- $dimList | join ", " }} | {{- $metric.unit -}} |
+| {{- $metric.name -}}| {{- $metric.description }} | {{- $dimList | join ", " }} | {{- $metric.unit -}} |
 {{- end }}
 {{ end }}
 
