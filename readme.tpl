@@ -85,6 +85,7 @@ No action required.
 {{- end }}
 
 ### Configuration
+{{- if .setup.configuration.examples.list }}
 
 #### File
 
@@ -133,7 +134,7 @@ sudo ./edit-config go.d/{{ .name }}.conf
 {{- end }}
 
 #### Examples
-{{- if .setup.configuration.examples.list }}
+
 {{- range $_, $val := .setup.configuration.examples.list }}
 
 ##### {{ $val.name }}
