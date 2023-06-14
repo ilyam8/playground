@@ -133,7 +133,7 @@ sudo ./edit-config go.d/{{ .name }}.conf
 {{- end }}
 
 #### Examples
-
+{{- if .setup.configuration.examples.list }}
 {{- range $_, $val := .setup.configuration.examples.list }}
 
 ##### {{ $val.name }}
@@ -154,6 +154,9 @@ sudo ./edit-config go.d/{{ .name }}.conf
 {{ $val.data -}}
 ```
 {{- end }}
+{{- end }}
+{{- else }}
+No configuration required.
 {{- end }}
 
 ## Troubleshooting
