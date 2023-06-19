@@ -164,8 +164,8 @@ No configuration required.
 
 ### Debug mode
 
-To troubleshoot issues with the `{{ .name }}` collector, run the `go.d.plugin` with the debug option enabled. The output
-should give you clues as to why the collector isn't working.
+To troubleshoot issues with the `{{ .name }}` collector, run the `go.d.plugin` with the debug option enabled.
+The output should give you clues as to why the collector isn't working.
 
 - Navigate to the `plugins.d` directory, usually at `/usr/libexec/netdata/plugins.d/`. If that's not the case on
   your system, open `netdata.conf` and look for the `plugins` setting under `[directories]`.
