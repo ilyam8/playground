@@ -71,12 +71,12 @@ netdata.dbengine_query_pages_data_source,,"main cache, disk, extent cache",pages
 netdata.dbengine_query_pages_disk_load,,"ok compressed, fail invalid page, ok uncompressed, fail cant mmap, fail unavailable, fail unroutable, fail not found, fail invalid extent, extent merged, cancelled",pages/s,Netdata Query Pages Loaded from Disk (netdata.dbengine_query_pages_disk_load),line,,netdata,stats
 netdata.dbengine_query_pages_metadata_source,,"cache hit, journal v2 scan, open journal",pages/s,Netdata Query Pages Metadata Source (netdata.dbengine_query_pages_metadata_source),stacked,,netdata,stats
 netdata.dbengine_query_timings,,"init, prep wait, next page disk fast, next page disk slow, next page preload fast, next page preload slow",usec/s,Netdata Query Timings (netdata.dbengine_query_timings),stacked,,netdata,stats
-netdata.dictionaries.category.callbacks,,"inserts, deletes, conflicts, reacts",callbacks/s,Dictionary Callbacks (netdata.dictionaries.rrdset_rrddim.callbacks),line,category,netdata,stats
-netdata.dictionaries.category.dictionaries,,"active, deleted",dictionaries,Dictionaries (netdata.dictionaries.collectors.dictionaries),line,category,netdata,stats
-netdata.dictionaries.category.items,,"active, deleted, referenced",items,Dictionary Items (netdata.dictionaries.collectors.items),line,category,netdata,stats
-netdata.dictionaries.category.memory,,"index, data, structures",bytes,Dictionary Memory (netdata.dictionaries.collectors.memory),stacked,category,netdata,stats
-netdata.dictionaries.category.ops,,"creations, destructions, flushes, traversals, walkthroughs, garbage_collections, searches, inserts, resets, deletes",ops/s,Dictionary Operations (netdata.dictionaries.collectors.ops),line,category,netdata,stats
-netdata.dictionaries.category.spins,,"use, search, insert, delete",count,Dictionary Spins (netdata.dictionaries.rrdset_rrddim.spins),line,category,netdata,stats
+netdata.dictionaries.category.callbacks,TODO,"inserts, deletes, conflicts, reacts",callbacks/s,Dictionary Callbacks (netdata.dictionaries.rrdset_rrddim.callbacks),line,category,netdata,stats
+netdata.dictionaries.category.dictionaries,TODO,"active, deleted",dictionaries,Dictionaries (netdata.dictionaries.collectors.dictionaries),line,category,netdata,stats
+netdata.dictionaries.category.items,TODO,"active, deleted, referenced",items,Dictionary Items (netdata.dictionaries.collectors.items),line,category,netdata,stats
+netdata.dictionaries.category.memory,TODO,"index, data, structures",bytes,Dictionary Memory (netdata.dictionaries.collectors.memory),stacked,category,netdata,stats
+netdata.dictionaries.category.ops,TODO,"creations, destructions, flushes, traversals, walkthroughs, garbage_collections, searches, inserts, resets, deletes",ops/s,Dictionary Operations (netdata.dictionaries.collectors.ops),line,category,netdata,stats
+netdata.dictionaries.category.spins,TODO,"use, search, insert, delete",count,Dictionary Spins (netdata.dictionaries.rrdset_rrddim.spins),line,category,netdata,stats
 netdata.ebpf_hash_tables_count,,hash_table,hash tables,Number of hash tables loaded. (netdata.ebpf_hash_tables_count),line,,ebpf.plugin,process
 netdata.ebpf_hash_tables_per_core,,"per_core, unique",threads,How threads are loading hash/array tables. (netdata.ebpf_hash_tables_per_core),line,,ebpf.plugin,process
 netdata.ebpf_kernel_memory,,memory_locked,bytes,Memory allocated for hash tables. (netdata.ebpf_kernel_memory),line,,ebpf.plugin,process
