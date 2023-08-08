@@ -17,3 +17,15 @@ longer history for your metrics. Tiers are automatically chosen at query time de
 resolution requested.
 
 </details>
+
+
+> **NOTE**<br/>
+> Netdata Functions are available only when you are signed-in to Netdata and your Netdata Agent is claimed.
+> This has been done to protect your privacy. Netdata Cloud checks that the users of the Agent dashboard are allowed to view this information.
+
+> **WARNING**<br/>
+> Netdata Functions are available only when you are signed-in to Netdata and your Netdata Agent is claimed.
+> This has been done to protect your privacy. Netdata Cloud checks that the users of the Agent dashboard are allowed to view this information.
+
+> **IMPORTANT**<br/>
+> The `systemd-journal` function is currently available only on Netdata Agents that have been installed from source, or with native packages of the Linux distribution (RPM, DEB). Users running static builds of Netdata or running Netdata in a docker container, we are working to bring `systemd-journal` to them too. Stay tuned...
