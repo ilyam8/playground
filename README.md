@@ -10,7 +10,7 @@
 > Crucial information necessary for users to succeed.
 
 > [!WARNING]  
-> Critical content is demanding immediate user attention due to potential risks.
+> Critical content demands immediate user attention due to potential risks.
 
 > [!CAUTION]
 > Negative potential consequences of an action.
